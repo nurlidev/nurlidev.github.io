@@ -4,142 +4,1008 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nurillo Soliyev - Cyber Security Specialist</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ==== BARCHA CSS KODLARI ==== */
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.6;
+            transition: background var(--transition);
+        }
+
+        body.dark {
+            --dark: #f8fafc;
+            --light: #0f172a;
+            --gray: #cbd5e1;
+            --gray-light: #1e293b;
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        /* ==== YUKLANISH EKRANI ==== */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        /* ==== NAVIGATION ==== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-light);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        body.dark .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        body.dark .logo {
+            color: var(--light);
+        }
+
+        .logo-text {
+            color: var(--dark);
+        }
+
+        body.dark .logo-text {
+            color: var(--light);
+        }
+
+        .logo-dot {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: color var(--transition);
+        }
+
+        body.dark .nav-link {
+            color: var(--light);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .theme-btn {
+            background: var(--gray-light);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--dark);
+            transition: all var(--transition);
+        }
+
+        .theme-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: rotate(15deg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        body.dark .mobile-menu-btn {
+            color: var(--light);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            background: var(--light);
+            padding: 20px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            box-shadow: var(--shadow);
+        }
+
+        body.dark .mobile-menu {
+            background: var(--dark);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            color: var(--dark);
+            text-decoration: none;
+            padding: 12px 0;
+            font-weight: 500;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        body.dark .mobile-nav-link {
+            color: var(--light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-link:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--primary);
+        }
+
+        /* ==== HERO SECTION ==== */
+        .hero-section {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+        }
+
+        body.dark .hero-section {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        }
+
+        .hero-section .container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        @media (max-width: 992px) {
+            .hero-section .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .text-highlight {
+            color: var(--primary);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* ==== TERMINAL ==== */
+        .hero-terminal {
+            flex: 1;
+        }
+
+        .terminal {
+            background: var(--dark);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        body.dark .terminal {
+            background: #1e293b;
+        }
+
+        .terminal-header {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+
+        .terminal-title {
+            color: var(--light);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .terminal-body {
+            padding: 30px;
+            color: var(--light);
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .prompt {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .status-online {
+            color: var(--success);
+        }
+
+        /* ==== ABOUT SECTION ==== */
+        .about-section {
+            background: var(--light);
+        }
+
+        body.dark .about-section {
+            background: var(--dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .profile-img {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 2rem;
+            color: var(--gray);
+        }
+
+        .about-info {
+            background: var(--gray-light);
+            padding: 25px;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+        }
+
+        body.dark .about-info {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .info-row {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .available {
+            color: var(--success);
+        }
+
+        /* ==== SKILLS SECTION ==== */
+        .skills-section {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+        }
+
+        body.dark .skills-section {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform var(--transition);
+        }
+
+        body.dark .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .skill-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: var(--gray-light);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        body.dark .tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+        }
+
+        /* ==== PROJECTS SECTION ==== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform var(--transition);
+        }
+
+        body.dark .project-card {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 200px;
+            position: relative;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 15px;
+        }
+
+        .project-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .project-tag {
+            background: var(--gray-light);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        body.dark .project-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: gap var(--transition);
+        }
+
+        .project-link:hover {
+            gap: 15px;
+        }
+
+        /* ==== CONTACT SECTION ==== */
+        .contact-content {
+            display: flex;
+            gap: 60px;
+        }
+
+        @media (max-width: 992px) {
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 30px;
+        }
+
+        .contact-items {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gray-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        body.dark .contact-icon {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item h4 {
+            margin-bottom: 5px;
+        }
+
+        .contact-item p {
+            color: var(--gray);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--gray-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+
+        body.dark .social-link {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--gray-light);
+            border-radius: var(--radius);
+            background: transparent;
+            color: var(--dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color var(--transition);
+        }
+
+        body.dark .form-group input,
+        body.dark .form-group textarea {
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ==== FOOTER ==== */
+        .footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 60px 0 30px;
+        }
+
+        body.dark .footer {
+            background: #1e293b;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        .footer-logo .logo {
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen">
-        <div class="loading-content">
-            <div class="terminal-loader">
-                <div class="terminal-header">
-                    <div class="terminal-title">system@portfolio:~</div>
-                    <div class="terminal-controls">
-                        <div class="control close"></div>
-                        <div class="control minimize"></div>
-                        <div class="control maximize"></div>
-                    </div>
-                </div>
-                <div class="terminal-text">
-                    <span class="dollar-sign">$</span> Initializing portfolio system...<br>
-                    <span class="dollar-sign">$</span> Loading security protocols...<br>
-                    <span class="dollar-sign">$</span> Welcome Nurillo Soliyev
-                </div>
-            </div>
-        </div>
+    <!-- Yuklanish ekrani -->
+    <div id="loading">
+        <div style="width:50px; height:50px; border:3px solid rgba(14,165,233,0.3); border-top-color:#0ea5e9; border-radius:50%; animation:spin 1s linear infinite;"></div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="#" class="logo">NS<span class="logo-dot">.</span></a>
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">NS</span>
+                <span class="logo-dot">.</span>
             </div>
             
-            <div class="nav-menu">
+            <div class="nav-links">
                 <a href="#home" class="nav-link active">Bosh Sahifa</a>
                 <a href="#about" class="nav-link">Haqimda</a>
                 <a href="#skills" class="nav-link">Ko'nikmalar</a>
                 <a href="#projects" class="nav-link">Loyihalar</a>
-                <a href="#experience" class="nav-link">Tajriba</a>
                 <a href="#contact" class="nav-link">Bog'lanish</a>
             </div>
             
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a href="#contact" class="btn-primary">Menyu</a>
-                <button class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            <button class="theme-btn" id="themeBtn">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-content">
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
             <a href="#home" class="mobile-nav-link active">Bosh Sahifa</a>
             <a href="#about" class="mobile-nav-link">Haqimda</a>
             <a href="#skills" class="mobile-nav-link">Ko'nikmalar</a>
             <a href="#projects" class="mobile-nav-link">Loyihalar</a>
-            <a href="#experience" class="mobile-nav-link">Tajriba</a>
             <a href="#contact" class="mobile-nav-link">Bog'lanish</a>
         </div>
-    </div>
+    </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
         <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="hero-badge">
-                        <span class="badge-text">Cybersecurity Specialist</span>
-                    </div>
-                    
-                    <h1 class="hero-title">
-                        Men <span class="text-gradient">Nurillo Soliyev</span>
-                        <br>Kiberxavfsizlik Mutaxassisi
-                    </h1>
-                    
-                    <p class="hero-description">
-                        Tizimlarni zamonaviy xavflardan himoya qilish, penetratsion testlar o'tkazish 
-                        va xavfsizlik arxitekturasini ishlab chiqish bo'yicha 2 yillik tajribaga egaman turli loyihalar ustidan jamoa bilan ishladidik
-                    </p>
-                    
-                    <div class="hero-actions">
-                        <a href="#projects" class="btn-primary btn-large">
-                            <i class="fas fa-shield-alt"></i>
-                            Loyihalarimni Ko'ring
-                        </a>
-                        <a href="#contact" class="btn-secondary btn-large">
-                            <i class="fas fa-envelope"></i>
-                            Bog'lanish
-                        </a>
-                    </div>
-                    
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">10+</span>
-                            <span class="stat-label">Muvaffaqiyatli Loyihalar</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">2+</span>
-                            <span class="stat-label">Yillik Tajriba</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Mijozlar Qoniqishi</span>
-                        </div>
-                    </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>Cyber Security Specialist</span>
                 </div>
                 
-                <div class="hero-visual">
-                    <div class="cyber-card">
-                        <div class="card-header">
-                            <div class="card-title">Security Terminal</div>
-                            <div class="card-controls">
-                                <div class="control-dot red"></div>
-                                <div class="control-dot yellow"></div>
-                                <div class="control-dot green"></div>
-                            </div>
+                <h1 class="hero-title">
+                    Men <span class="text-highlight">Nurillo Soliyev</span>,
+                    <br>Kiberxavfsizlik Mutaxassisi
+                </h1>
+                
+                <p class="hero-description">
+                    5+ yillik tajriba. Tizimlarni zamonaviy xavflardan himoya qilish,
+                    penetratsion testlar va xavfsizlik auditini amalga oshiraman.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-shield-alt"></i>
+                        Loyihalarim
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        Bog'lanish
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Loyihalar</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Yillik Tajriba</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Mijoz Qoniqishi</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-terminal">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
                         </div>
-                        <div class="card-content">
-                            <div class="terminal-output">
-                                <p><span class="terminal-prompt">root@security:~$</span> whoami</p>
-                                <p>Nurillo_Soliyev - Cyber Security Specialist</p>
-                                <br>
-                                <p><span class="terminal-prompt">root@security:~$</span> skills --list</p>
-                                <p>Penetration Testing | Network Security</p>
-                                <p>Threat Analysis | Incident Response</p>
-                                <p>Security Audit | Cryptography</p>
-                                <br>
-                                <p><span class="terminal-prompt">root@security:~$</span> status --online</p>
-                                <p class="status-online">● Available for security consultations</p>
-                            </div>
-                        </div>
+                        <span class="terminal-title">nurillo@security:~</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p><span class="prompt">$</span> whoami</p>
+                        <p>nurillo_soliyev - Cyber Security Specialist</p>
+                        <br>
+                        <p><span class="prompt">$</span> skills --list</p>
+                        <p>▶ Penetration Testing</p>
+                        <p>▶ Network Security</p>
+                        <p>▶ Security Audit</p>
+                        <p>▶ Threat Analysis</p>
+                        <br>
+                        <p><span class="prompt">$</span> status</p>
+                        <p class="status-online">● Available for projects</p>
                     </div>
                 </div>
             </div>
@@ -154,64 +1020,55 @@
                 <p class="section-subtitle">Kiberxavfsizlik bo'yicha mutaxassis</p>
             </div>
             
-            <div class="about-grid">
+            <div class="about-content">
                 <div class="about-image">
-                    <div class="image-container">
-                        <img src="images/profile.jpg" alt="Nurillo Soliyev" class="profile-image">
-                        <div class="image-overlay"></div>
-                        <div class="security-badge">
+                    <div class="profile-img">
+                        <!-- Profile rasmi uchun placeholder -->
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Nurillo Soliyev">
+                        <div class="profile-badge">
                             <i class="fas fa-shield-check"></i>
-                            Certified Specialist
+                            Certified
                         </div>
                     </div>
                 </div>
                 
-                <div class="about-content">
-                    <h3 class="about-title">Xavfsizlik dunyosi sarguzashtim</h3>
-                    
-                    <div class="about-text">
-                        <p>
-                            2 yildan ortiq vaqt davomida turli kompaniyalar va tashkilotlar konikmalar oldim va rivojlandim
-         Mening asosiy 
-                            maqsadim - mijozlarining ma'lumotlarini va tizimlarini zamonaviy 
-                            xavflardan himoya qilish.
-                        </p>
-                        
-                        <p>
-                            Men penetratsion testlar, tarmoq xavfsizligi, tahdidlarni tahlil qilish 
-                            va hodisalarga javob berish bo'yicha amalaiy tajribalar qildim va yana organib boryabman. Har bir 
-                            loyihada eng zamonaviy usullar va vositalardan foydalanyapman.
-                        </p>
-                    </div>
+                <div class="about-text">
+                    <h3>Xavfsizlik dunyosi sarguzashtim</h3>
+                    <p>
+                        5 yildan ortiq vaqt davomida turli kompaniyalar va tashkilotlar 
+                        uchun kiberxavfsizlik yechimlarini ishlab chiqyapman. Mening asosiy 
+                        maqsadim - mijozlarining ma'lumotlarini va tizimlarini zamonaviy 
+                        xavflardan himoya qilish.
+                    </p>
                     
                     <div class="about-info">
-                        <div class="info-item">
+                        <div class="info-row">
                             <strong>Ism:</strong>
                             <span>Nurillo Soliyev</span>
                         </div>
-                        <div class="info-item">
+                        <div class="info-row">
                             <strong>Kasb:</strong>
                             <span>Kiberxavfsizlik Mutaxassisi</span>
                         </div>
-                        <div class="info-item">
+                        <div class="info-row">
                             <strong>Email:</strong>
-                            <span>xmnew777@gmail.com</span>
+                            <span>nurillo@security.uz</span>
                         </div>
-                        <div class="info-item">
+                        <div class="info-row">
                             <strong>Telefon:</strong>
-                            <span>+998 942439800</span>
+                            <span>+998 90 123 45 67</span>
                         </div>
-                        <div class="info-item">
+                        <div class="info-row">
                             <strong>Manzil:</strong>
                             <span>Toshkent, O'zbekiston</span>
                         </div>
-                        <div class="info-item">
+                        <div class="info-row">
                             <strong>Mavjudlik:</strong>
-                            <span class="availability">Mavjud</span>
+                            <span class="available">● Mavjud</span>
                         </div>
                     </div>
                     
-                    <a href="#contact" class="btn-primary">
+                    <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-paper-plane"></i>
                         Xabar Yuborish
                     </a>
@@ -225,103 +1082,59 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Maxsus Ko'nikmalar</h2>
-                <p class="section-subtitle">Kiberxavfsizlik bo'yicha mutaxassislik sohalarim</p>
+                <p class="section-subtitle">Kiberxavfsizlik bo'yicha mutaxassislik sohalari</p>
             </div>
             
             <div class="skills-grid">
-                <!-- Skill 1 -->
                 <div class="skill-card">
                     <div class="skill-icon">
                         <i class="fas fa-bug"></i>
                     </div>
-                    <h3 class="skill-title">Penetratsion Test</h3>
-                    <p class="skill-description">
-                        Tizimlarning zaif tomonlarini aniqlash va ularni buzishga urinish.
-                    </p>
-                    <div class="skill-tools">
-                        <span class="tool-tag">Metasploit</span>
-                        <span class="tool-tag">Burp Suite</span>
-                        <span class="tool-tag">Nmap</span>
+                    <h3>Penetration Testing</h3>
+                    <p>Tizimlarning zaif tomonlarini aniqlash va ularni buzishga urinish.</p>
+                    <div class="skill-tags">
+                        <span class="tag">Metasploit</span>
+                        <span class="tag">Burp Suite</span>
+                        <span class="tag">Nmap</span>
                     </div>
                 </div>
                 
-                <!-- Skill 2 -->
                 <div class="skill-card">
                     <div class="skill-icon">
                         <i class="fas fa-network-wired"></i>
                     </div>
-                    <h3 class="skill-title">Tarmoq Xavfsizligi</h3>
-                    <p class="skill-description">
-                        Tarmoq infratuzilmasini himoya qilish va monitoring.
-                    </p>
-                    <div class="skill-tools">
-                        <span class="tool-tag">Wireshark</span>
-                        <span class="tool-tag">Firewall</span>
-                        <span class="tool-tag">IDS/IPS</span>
+                    <h3>Tarmoq Xavfsizligi</h3>
+                    <p>Tarmoq infratuzilmasini himoya qilish va monitoring.</p>
+                    <div class="skill-tags">
+                        <span class="tag">Wireshark</span>
+                        <span class="tag">Firewall</span>
+                        <span class="tag">IDS/IPS</span>
                     </div>
                 </div>
                 
-                <!-- Skill 3 -->
                 <div class="skill-card">
                     <div class="skill-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3 class="skill-title">Xavfsizlik Audit</h3>
-                    <p class="skill-description">
-                        Tizimlarning xavfsizlik holatini baholash va hisobot.
-                    </p>
-                    <div class="skill-tools">
-                        <span class="tool-tag">Nessus</span>
-                        <span class="tool-tag">OpenVAS</span>
-                        <span class="tool-tag">OWASP</span>
+                    <h3>Security Audit</h3>
+                    <p>Tizimlarning xavfsizlik holatini baholash va hisobot.</p>
+                    <div class="skill-tags">
+                        <span class="tag">Nessus</span>
+                        <span class="tag">OpenVAS</span>
+                        <span class="tag">OWASP</span>
                     </div>
                 </div>
                 
-                <!-- Skill 4 -->
                 <div class="skill-card">
                     <div class="skill-icon">
                         <i class="fas fa-user-secret"></i>
                     </div>
-                    <h3 class="skill-title">Tahdidlarni Tahlil</h3>
-                    <p class="skill-description">
-                        Potensial xavflarni aniqlash va ularga qarshi choralar.
-                    </p>
-                    <div class="skill-tools">
-                        <span class="tool-tag">SIEM</span>
-                        <span class="tool-tag">Threat Intel</span>
-                        <span class="tool-tag">Malware Analysis</span>
-                    </div>
-                </div>
-                
-                <!-- Skill 5 -->
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="skill-title">Xavfsiz Kodlash</h3>
-                    <p class="skill-description">
-                        Dasturlarni xavfsizlik nuqtai nazaridan ishlab chiqish.
-                    </p>
-                    <div class="skill-tools">
-                        <span class="tool-tag">Python</span>
-                        <span class="tool-tag">Bash</span>
-                        <span class="tool-tag">Secure SDLC</span>
-                    </div>
-                </div>
-                
-                <!-- Skill 6 -->
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3 class="skill-title">Kriptografiya</h3>
-                    <p class="skill-description">
-                        Ma'lumotlarni shifrlash va himoya qilish.
-                    </p>
-                    <div class="skill-tools">
-                        <span class="tool-tag">SSL/TLS</span>
-                        <span class="tool-tag">PGP</span>
-                        <span class="tool-tag">AES</span>
+                    <h3>Threat Analysis</h3>
+                    <p>Potensial xavflarni aniqlash va ularga qarshi choralar.</p>
+                    <div class="skill-tags">
+                        <span class="tag">SIEM</span>
+                        <span class="tag">Threat Intel</span>
+                        <span class="tag">Malware Analysis</span>
                     </div>
                 </div>
             </div>
@@ -333,124 +1146,45 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">So'nggi Loyihalar</h2>
-                <p class="section-subtitle">Muvaffaqiyatli amalga oshirilgan xavfsizlik loyihalari va tajribalar</p>
+                <p class="section-subtitle">Muvaffaqiyatli amalga oshirilgan xavfsizlik loyihalari</p>
             </div>
             
             <div class="projects-grid">
-                <!-- Project 1 -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-badge">2025</div>
+                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div class="project-badge">2023</div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Bank Tizimi Xavfsizligi</h3>
-                        <p class="project-description">
-                            Yirik bank tizimining to'liq xavfsizlik auditini o'tkazish va zaifliklarni bartaraf etish.
-                        </p>
+                        <h3>Bank Tizimi Xavfsizligi</h3>
+                        <p>Yirik bank tizimining to'liq xavfsizlik auditini o'tkazish va zaifliklarni bartaraf etish.</p>
                         <div class="project-tags">
                             <span class="project-tag">Penetration Testing</span>
                             <span class="project-tag">Audit</span>
                             <span class="project-tag">Financial Security</span>
                         </div>
                         <a href="#" class="project-link">
-                            Batafsil Ma'lumot
+                            Batafsil ma'lumot
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
                 
-                <!-- Project 2 -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-badge">2024</div>
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="project-badge">2023</div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">E-Government Platform Security</h3>
-                        <p class="project-description">
-                            Davlat platformasining xavfsizlik arxitekturasini ishlab chiqish va amalga oshirishda yordam berish
-                        </p>
+                        <h3>E-Government Platform</h3>
+                        <p>Davlat platformasining xavfsizlik arxitekturasini ishlab chiqish va amalga oshirish.</p>
                         <div class="project-tags">
                             <span class="project-tag">Network Security</span>
                             <span class="project-tag">Infrastructure</span>
                             <span class="project-tag">Compliance</span>
                         </div>
                         <a href="#" class="project-link">
-                            Batafsil Ma'lumot
+                            Batafsil ma'lumot
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-badge">2025</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Startup Data Protection</h3>
-                        <p class="project-description">
-                            Startup kompaniyasi uchun ma'lumotlarni himoya qilish tizimini yaratish boyicha maslahatlar
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Data Encryption</span>
-                            <span class="project-tag">Access Control</span>
-                            <span class="project-tag">Backup Systems</span>
-                        </div>
-                        <a href="#" class="project-link">
-                            Batafsil Ma'lumot
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="section experience-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Ish Tajribasi</h2>
-                <p class="section-subtitle">Professional yo'lim</p>
-            </div>
-            
-            <div class="timeline">
-                <!-- Experience 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-date">2024 -2025 </div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title"> Xavfsizlik Mutaxassisi</h3>
-                        <span class="timeline-company">SecureTech Solutions</span>
-                        <p class="timeline-description">
-                            Kiberxavfsizlik loyihalarini boshqarish, jamoa bilan ishlash 
-                            va murakkab xavfsizlik muammolarini hal qilish.
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Experience 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-date">2024 - 2025</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Penetration Tester</h3>
-                        <span class="timeline-company">CyberDefense Agency</span>
-                        <p class="timeline-description">
-                            Turli tashkilotlar uchun penetratsion testlar o'tkazish, 
-                            xavfsizlik zaifliklarini aniqlash va tavsiyalar berish.
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Experience 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-date">2023 - 2024</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Network Security Analyst</h3>
-                        <span class="timeline-company">DataGuard Systems</span>
-                        <p class="timeline-description">
-                            Tarmoq xavfsizligini monitoring qilish, tahdidlarni aniqlash 
-                            va ularga qarshi choralar ko'rish.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -465,18 +1199,18 @@
                 <p class="section-subtitle">Xavfsizlik bo'yicha maslahat yoki hamkorlik uchun</p>
             </div>
             
-            <div class="contact-grid">
+            <div class="contact-content">
                 <div class="contact-info">
-                    <h3 class="contact-title">Kontakt Ma'lumotlarim</h3>
+                    <h3>Kontakt Ma'lumotlarim</h3>
                     
                     <div class="contact-items">
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="contact-details">
+                            <div>
                                 <h4>Email</h4>
-                                <p>xmnew777@gmail.com</p>
+                                <p>nurillo@security.uz</p>
                             </div>
                         </div>
                         
@@ -484,9 +1218,9 @@
                             <div class="contact-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <div class="contact-details">
+                            <div>
                                 <h4>Telefon</h4>
-                                <p>+998 942439800</p>
+                                <p>+998 90 123 45 67</p>
                             </div>
                         </div>
                         
@@ -494,19 +1228,9 @@
                             <div class="contact-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <div class="contact-details">
+                            <div>
                                 <h4>Manzil</h4>
                                 <p>Toshkent, O'zbekiston</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Ish Vaqti</h4>
-                                <p>full time part time remote</p>
                             </div>
                         </div>
                     </div>
@@ -545,7 +1269,7 @@
                             <textarea placeholder="Xabaringiz..." rows="5" required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn-primary btn-full">
+                        <button type="submit" class="btn btn-primary btn-full">
                             <i class="fas fa-paper-plane"></i>
                             Xabarni Yuborish
                         </button>
@@ -560,10 +1284,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <a href="#" class="logo">NS<span class="logo-dot">.</span></a>
-                    <p class="footer-description">
-                        Kiberxavfsizlik bo'yicha professional yechimlar
-                    </p>
+                    <div class="logo">
+                        <span class="logo-text">NS</span>
+                        <span class="logo-dot">.</span>
+                    </div>
+                    <p>Kiberxavfsizlik bo'yicha professional yechimlar</p>
                 </div>
                 
                 <div class="footer-links">
@@ -573,419 +1298,97 @@
                     <a href="#skills">Ko'nikmalar</a>
                     <a href="#projects">Loyihalar</a>
                 </div>
-                
-                <div class="footer-links">
-                    <h4>Xizmatlar</h4>
-                    <a href="#projects">Penetration Testing</a>
-                    <a href="#projects">Security analyst</a>
-                    <a href="#projects">Consulting</a>
-                    <a href="#projects">Training</a>
-                </div>
-                
-                <div class="footer-newsletter">
-                    <h4>Yangiliklar</h4>
-                    <p>Xavfsizlik bo'yicha yangiliklar va maslahatlar</p>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Email manzilingiz">
-                        <button type="submit">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
             </div>
             
             <div class="footer-bottom">
                 <p>&copy; 2023 Nurillo Soliyev. Barcha huquqlar himoyalangan.</p>
-                <p>Designed with <i class="fas fa-heart"></i> for Security</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JavaScript -->
+    <script>
+        // Sayt yuklanishi
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+            }, 1000);
+        });
+
+        // Tema o'zgartirish
+        const themeBtn = document.getElementById('themeBtn');
+        const themeIcon = themeBtn.querySelector('i');
+        
+        themeBtn.addEventListener('click', function() {
+            document.body.classList.toggle('dark');
+            
+            if (document.body.classList.contains('dark')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Mobile menu linklarini yopish
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Navigation active link
+        const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Contact form
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Xabaringiz yuborildi! Tez orada siz bilan bog\'lanamiz.');
+            contactForm.reset();
+        });
+
+        // Scroll animatsiyasi
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                if (document.body.classList.contains('dark')) {
+                    navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+                }
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                if (document.body.classList.contains('dark')) {
+                    navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+                }
+            }
+        });
+
+        // LocalStorage'dan temani o'qish
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+    </script>
 </body>
 </html>
-/* ===== ROOT VARIABLES ===== */
-:root {
-    /* Colors - Light Theme */
-    --primary-color: #0ea5e9;
-    --primary-dark: #0284c7;
-    --secondary-color: #8b5cf6;
-    --dark-color: #0f172a;
-    --light-color: #f8fafc;
-    --gray-color: #64748b;
-    --gray-light: #e2e8f0;
-    --success-color: #10b981;
-    --danger-color: #ef4444;
-    --warning-color: #f59e0b;
-    
-    /* Typography */
-    --font-primary: 'Inter', sans-serif;
-    --font-secondary: 'Space Grotesk', sans-serif;
-    
-    /* Spacing */
-    --section-padding: 100px 0;
-    --container-width: 1200px;
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
-    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
-    
-    /* Border Radius */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-    
-    /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
-}
-
-/* Dark Theme Variables */
-[data-theme="dark"] {
-    --dark-color: #f8fafc;
-    --light-color: #0f172a;
-    --gray-color: #cbd5e1;
-    --gray-light: #1e293b;
-}
-
-/* ===== RESET & BASE STYLES ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-}
-
-body {
-    font-family: var(--font-primary);
-    color: var(--dark-color);
-    background-color: var(--light-color);
-    line-height: 1.6;
-    transition: background-color var(--transition-normal);
-    overflow-x: hidden;
-}
-
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.section {
-    padding: var(--section-padding);
-}
-
-/* ===== TYPOGRAPHY ===== */
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-secondary);
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-h3 {
-    font-size: 1.75rem;
-    margin-bottom: 0.75rem;
-}
-
-p {
-    margin-bottom: 1rem;
-    color: var(--gray-color);
-}
-
-.text-gradient {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-/* ===== LOADING SCREEN ===== */
-.loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--dark-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    transition: opacity var(--transition-normal);
-}
-
-.loading-content {
-    max-width: 500px;
-    width: 100%;
-}
-
-.terminal-loader {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.terminal-header {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 12px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.terminal-title {
-    color: var(--light-color);
-    font-family: var(--font-secondary);
-    font-size: 0.9rem;
-}
-
-.terminal-controls {
-    display: flex;
-    gap: 8px;
-}
-
-.control {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.control.close { background: #ff5f56; }
-.control.minimize { background: #ffbd2e; }
-.control.maximize { background: #27c93f; }
-
-.terminal-text {
-    padding: 30px 20px;
-    color: var(--light-color);
-    font-family: 'Courier New', monospace;
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-.dollar-sign {
-    color: var(--primary-color);
-    margin-right: 10px;
-}
-
-/* ===== NAVIGATION ===== */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    transition: all var(--transition-normal);
-}
-
-[data-theme="dark"] .navbar {
-    background: rgba(15, 23, 42, 0.95);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-}
-
-.logo {
-    font-family: var(--font-secondary);
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--dark-color);
-    text-decoration: none;
-}
-
-[data-theme="dark"] .logo {
-    color: var(--light-color);
-}
-
-.logo-dot {
-    color: var(--primary-color);
-}
-
-.nav-menu {
-    display: flex;
-    gap: 2rem;
-}
-
-.nav-link {
-    color: var(--dark-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color var(--transition-fast);
-    position: relative;
-    padding: 5px 0;
-}
-
-[data-theme="dark"] .nav-link {
-    color: var(--light-color);
-}
-
-.nav-link:hover {
-    color: var(--primary-color);
-}
-
-.nav-link.active {
-    color: var(--primary-color);
-}
-
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--primary-color);
-    border-radius: 2px;
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.theme-toggle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    background: var(--gray-light);
-    color: var(--dark-color);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-fast);
-}
-
-.theme-toggle:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: rotate(15deg);
-}
-
-.btn-primary {
-    background: var(--primary-color);
-    color: white;
-    padding: 10px 24px;
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all var(--transition-normal);
-}
-
-.btn-primary:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-}
-
-.btn-large {
-    padding: 14px 32px;
-    font-size: 1.1rem;
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--dark-color);
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-[data-theme="dark"] .menu-toggle {
-    color: var(--light-color);
-}
-
-/* Mobile Menu */
-.mobile-menu {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background: var(--light-color);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transform: translateY(-100%);
-    opacity: 0;
-    transition: all var(--transition-normal);
-    z-index: 999;
-}
-
-[data-theme="dark"] .mobile-menu {
-    background: var(--dark-color);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mobile-menu.active {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.mobile-menu-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.mobile-nav-link {
-    color: var(--dark-color);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 12px 16px;
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
-}
-
-[data-theme="dark"] .mobile-nav-link {
-    color: var(--light-color);
-}
-
-.mobile-nav-link:hover {
-    background: var(--gray-light);
-    color: var(--primary-color);
-}
-
-.mobile-nav-link.active {
-    background: var(--primary-color);
-    color: white;
-}
-
-/* ===== HERO SECTION ===== */
-.hero-section {
-    padding-top: 140px;
-    padding-bottom: 80px;
-    background: linear-gradient(135deg, rgba(14, 165, 233
