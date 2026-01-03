@@ -1,429 +1,607 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soliyev Nurillo | Personal Portfolio</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
+    <title>Nurillo Soliyev - Cyber Security Specialist</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Inter Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                        }
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-in-out',
-                        'slide-up': 'slideUp 0.5s ease-out',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(20px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        }
-                    }
-                }
-            }
-        }
-        
-        // Theme toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeToggleIcon = document.getElementById('theme-toggle-icon');
-            
-            // Check for saved theme preference or default to light
-            if (localStorage.getItem('theme') === 'dark' || 
-                (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-                themeToggleIcon.classList.remove('fa-moon');
-                themeToggleIcon.classList.add('fa-sun');
-            } else {
-                document.documentElement.classList.remove('dark');
-                themeToggleIcon.classList.remove('fa-sun');
-                themeToggleIcon.classList.add('fa-moon');
-            }
-            
-            // Toggle theme
-            themeToggle.addEventListener('click', function() {
-                document.documentElement.classList.toggle('dark');
-                
-                if (document.documentElement.classList.contains('dark')) {
-                    localStorage.setItem('theme', 'dark');
-                    themeToggleIcon.classList.remove('fa-moon');
-                    themeToggleIcon.classList.add('fa-sun');
-                } else {
-                    localStorage.setItem('theme', 'light');
-                    themeToggleIcon.classList.remove('fa-sun');
-                    themeToggleIcon.classList.add('fa-moon');
-                }
-            });
-            
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Close mobile menu when clicking a link
-            const mobileLinks = document.querySelectorAll('#mobile-menu a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-        });
-    </script>
-    
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        .gradient-text {
-            background: linear-gradient(90deg, #0ea5e9, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-        }
-        .dark .dark\:bg-gray-900 {
-            background-color: #111827;
-        }
-        .dark .dark\:bg-gray-800 {
-            background-color: #1f2937;
-        }
-        .dark .dark\:text-white {
-            color: #f9fafb;
-        }
-        .dark .dark\:text-gray-300 {
-            color: #d1d5db;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="#" class="text-xl font-bold tracking-tight">Soliyev Nurillo</a>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-content">
+            <div class="terminal-loader">
+                <div class="terminal-header">
+                    <div class="terminal-title">system@portfolio:~</div>
+                    <div class="terminal-controls">
+                        <div class="control close"></div>
+                        <div class="control minimize"></div>
+                        <div class="control maximize"></div>
+                    </div>
                 </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors">About</a>
-                    <a href="#articles" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors">Articles</a>
-                    <a href="#projects" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors">Projects</a>
-                    <a href="#speaking" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors">Speaking</a>
-                    <a href="#uses" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors">Uses</a>
-                </div>
-                
-                <!-- Theme Toggle & CTA -->
-                <div class="flex items-center space-x-4">
-                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                        <i id="theme-toggle-icon" class="fas fa-moon"></i>
-                    </button>
-                    <a href="#contact" class="hidden md:inline-block px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors">
-                        Get in touch
-                    </a>
-                    <!-- Mobile menu button -->
-                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">
-                        <i class="fas fa-bars text-lg"></i>
-                    </button>
+                <div class="terminal-text">
+                    <span class="dollar-sign">$</span> Initializing portfolio system...<br>
+                    <span class="dollar-sign">$</span> Loading security protocols...<br>
+                    <span class="dollar-sign">$</span> Welcome Nurillo Soliyev
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="#" class="logo">NS<span class="logo-dot">.</span></a>
+            </div>
             
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-gray-200 dark:border-gray-800">
-                <div class="flex flex-col space-y-4">
-                    <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors">About</a>
-                    <a href="#articles" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors">Articles</a>
-                    <a href="#projects" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors">Projects</a>
-                    <a href="#speaking" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors">Speaking</a>
-                    <a href="#uses" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors">Uses</a>
-                    <a href="#contact" class="mt-4 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors text-center">
-                        Get in touch
-                    </a>
-                </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Bosh Sahifa</a>
+                <a href="#about" class="nav-link">Haqimda</a>
+                <a href="#skills" class="nav-link">Ko'nikmalar</a>
+                <a href="#projects" class="nav-link">Loyihalar</a>
+                <a href="#experience" class="nav-link">Tajriba</a>
+                <a href="#contact" class="nav-link">Bog'lanish</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="#contact" class="btn-primary">Menyu</a>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#home" class="mobile-nav-link active">Bosh Sahifa</a>
+            <a href="#about" class="mobile-nav-link">Haqimda</a>
+            <a href="#skills" class="mobile-nav-link">Ko'nikmalar</a>
+            <a href="#projects" class="mobile-nav-link">Loyihalar</a>
+            <a href="#experience" class="mobile-nav-link">Tajriba</a>
+            <a href="#contact" class="mobile-nav-link">Bog'lanish</a>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section class="py-20 md:py-32">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto text-center">
-                <div class="mb-6">
-                    <span class="inline-block px-4 py-1 bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400 rounded-full text-sm font-medium">Product Designer & Developer</span>
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-text">Cybersecurity Specialist</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Men <span class="text-gradient">Nurillo Soliyev</span>
+                        <br>Kiberxavfsizlik Mutaxassisi
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Tizimlarni zamonaviy xavflardan himoya qilish, penetratsion testlar o'tkazish 
+                        va xavfsizlik arxitekturasini ishlab chiqish bo'yicha 2 yillik tajribaga egaman turli loyihalar ustidan jamoa bilan ishladidik
+                    </p>
+                    
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn-primary btn-large">
+                            <i class="fas fa-shield-alt"></i>
+                            Loyihalarimni Ko'ring
+                        </a>
+                        <a href="#contact" class="btn-secondary btn-large">
+                            <i class="fas fa-envelope"></i>
+                            Bog'lanish
+                        </a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Muvaffaqiyatli Loyihalar</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2+</span>
+                            <span class="stat-label">Yillik Tajriba</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Mijozlar Qoniqishi</span>
+                        </div>
+                    </div>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 animate-fade-in">
-                    Hi, I'm <span class="gradient-text">Soliyev Nurillo</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-10 animate-slide-up">
-                    I create exceptional digital experiences at the intersection of design and technology. Currently building products at <span class="font-semibold text-gray-800 dark:text-gray-300">Innovate Labs</span>.
-                </p>
-                <div class="flex flex-wrap justify-center gap-4 animate-slide-up" style="animation-delay: 0.1s">
-                    <a href="#projects" class="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl">
-                        View my work
-                    </a>
-                    <a href="#articles" class="px-6 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium rounded-lg transition-colors">
-                        Read articles
+                
+                <div class="hero-visual">
+                    <div class="cyber-card">
+                        <div class="card-header">
+                            <div class="card-title">Security Terminal</div>
+                            <div class="card-controls">
+                                <div class="control-dot red"></div>
+                                <div class="control-dot yellow"></div>
+                                <div class="control-dot green"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="terminal-output">
+                                <p><span class="terminal-prompt">root@security:~$</span> whoami</p>
+                                <p>Nurillo_Soliyev - Cyber Security Specialist</p>
+                                <br>
+                                <p><span class="terminal-prompt">root@security:~$</span> skills --list</p>
+                                <p>Penetration Testing | Network Security</p>
+                                <p>Threat Analysis | Incident Response</p>
+                                <p>Security Audit | Cryptography</p>
+                                <br>
+                                <p><span class="terminal-prompt">root@security:~$</span> status --online</p>
+                                <p class="status-online">● Available for security consultations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Haqimda</h2>
+                <p class="section-subtitle">Kiberxavfsizlik bo'yicha mutaxassis</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="image-container">
+                        <img src="images/profile.jpg" alt="Nurillo Soliyev" class="profile-image">
+                        <div class="image-overlay"></div>
+                        <div class="security-badge">
+                            <i class="fas fa-shield-check"></i>
+                            Certified Specialist
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-content">
+                    <h3 class="about-title">Xavfsizlik dunyosi sarguzashtim</h3>
+                    
+                    <div class="about-text">
+                        <p>
+                            2 yildan ortiq vaqt davomida turli kompaniyalar va tashkilotlar konikmalar oldim va rivojlandim
+         Mening asosiy 
+                            maqsadim - mijozlarining ma'lumotlarini va tizimlarini zamonaviy 
+                            xavflardan himoya qilish.
+                        </p>
+                        
+                        <p>
+                            Men penetratsion testlar, tarmoq xavfsizligi, tahdidlarni tahlil qilish 
+                            va hodisalarga javob berish bo'yicha amalaiy tajribalar qildim va yana organib boryabman. Har bir 
+                            loyihada eng zamonaviy usullar va vositalardan foydalanyapman.
+                        </p>
+                    </div>
+                    
+                    <div class="about-info">
+                        <div class="info-item">
+                            <strong>Ism:</strong>
+                            <span>Nurillo Soliyev</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Kasb:</strong>
+                            <span>Kiberxavfsizlik Mutaxassisi</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Email:</strong>
+                            <span>xmnew777@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Telefon:</strong>
+                            <span>+998 942439800</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Manzil:</strong>
+                            <span>Toshkent, O'zbekiston</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Mavjudlik:</strong>
+                            <span class="availability">Mavjud</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Xabar Yuborish
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Articles Section -->
-    <section id="articles" class="py-20 bg-gray-50 dark:bg-gray-900">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-12">
-                    <h2 class="text-3xl font-bold mb-4">Featured Articles</h2>
-                    <p class="text-gray-600 dark:text-gray-400">Thoughts on design, development, and product strategy.</p>
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Maxsus Ko'nikmalar</h2>
+                <p class="section-subtitle">Kiberxavfsizlik bo'yicha mutaxassislik sohalarim</p>
+            </div>
+            
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3 class="skill-title">Penetratsion Test</h3>
+                    <p class="skill-description">
+                        Tizimlarning zaif tomonlarini aniqlash va ularni buzishga urinish.
+                    </p>
+                    <div class="skill-tools">
+                        <span class="tool-tag">Metasploit</span>
+                        <span class="tool-tag">Burp Suite</span>
+                        <span class="tool-tag">Nmap</span>
+                    </div>
                 </div>
                 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Article 1 -->
-                    <article class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden card-hover">
-                        <div class="p-6">
-                            <div class="flex items-center mb-4">
-                                <span class="text-xs font-medium px-3 py-1 bg-primary-50 dark:bg-gray-700 text-primary-600 dark:text-primary-400 rounded-full">Design</span>
-                                <span class="mx-2 text-gray-400">•</span>
-                                <span class="text-sm text-gray-500 dark:text-gray-400">May 12, 2023</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3">The Future of cyber security engeenr  </h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">Exploring how design systems are evolving to meet the demands of modern digital products and cross-platform experiences.</p>
-                            <a href="#" class="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300">
-                                Read article
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </article>
-                    
-                    <!-- Article 2 -->
-                    <article class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden card-hover">
-                        <div class="p-6">
-                            <div class="flex items-center mb-4">
-                                <span class="text-xs font-medium px-3 py-1 bg-green-50 dark:bg-gray-700 text-green-600 dark:text-green-400 rounded-full">Development</span>
-                                <span class="mx-2 text-gray-400">•</span>
-                                <span class="text-sm text-gray-500 dark:text-gray-400">April 28, 2023</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3">Building Accessible Web Applications</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">A practical guide to implementing accessibility best practices in modern web development workflows.</p>
-                            <a href="#" class="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300">
-                                Read article
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </article>
-                    
-                    <!-- Article 3 -->
-                    <article class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden card-hover">
-                        <div class="p-6">
-                            <div class="flex items-center mb-4">
-                                <span class="text-xs font-medium px-3 py-1 bg-purple-50 dark:bg-gray-700 text-purple-600 dark:text-purple-400 rounded-full">Product</span>
-                                <span class="mx-2 text-gray-400">•</span>
-                                <span class="text-sm text-gray-500 dark:text-gray-400">March 15, 2023</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3">Measuring Product Success Beyond Metrics</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">Understanding qualitative measures of product success that go beyond traditional KPIs and analytics.</p>
-                            <a href="#" class="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300">
-                                Read article
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </article>
+                <!-- Skill 2 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="skill-title">Tarmoq Xavfsizligi</h3>
+                    <p class="skill-description">
+                        Tarmoq infratuzilmasini himoya qilish va monitoring.
+                    </p>
+                    <div class="skill-tools">
+                        <span class="tool-tag">Wireshark</span>
+                        <span class="tool-tag">Firewall</span>
+                        <span class="tool-tag">IDS/IPS</span>
+                    </div>
                 </div>
                 
-                <div class="mt-12 text-center">
-                    <a href="#" class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium rounded-lg transition-colors">
-                        View all articles
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                <!-- Skill 3 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="skill-title">Xavfsizlik Audit</h3>
+                    <p class="skill-description">
+                        Tizimlarning xavfsizlik holatini baholash va hisobot.
+                    </p>
+                    <div class="skill-tools">
+                        <span class="tool-tag">Nessus</span>
+                        <span class="tool-tag">OpenVAS</span>
+                        <span class="tool-tag">OWASP</span>
+                    </div>
+                </div>
+                
+                <!-- Skill 4 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3 class="skill-title">Tahdidlarni Tahlil</h3>
+                    <p class="skill-description">
+                        Potensial xavflarni aniqlash va ularga qarshi choralar.
+                    </p>
+                    <div class="skill-tools">
+                        <span class="tool-tag">SIEM</span>
+                        <span class="tool-tag">Threat Intel</span>
+                        <span class="tool-tag">Malware Analysis</span>
+                    </div>
+                </div>
+                
+                <!-- Skill 5 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="skill-title">Xavfsiz Kodlash</h3>
+                    <p class="skill-description">
+                        Dasturlarni xavfsizlik nuqtai nazaridan ishlab chiqish.
+                    </p>
+                    <div class="skill-tools">
+                        <span class="tool-tag">Python</span>
+                        <span class="tool-tag">Bash</span>
+                        <span class="tool-tag">Secure SDLC</span>
+                    </div>
+                </div>
+                
+                <!-- Skill 6 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="skill-title">Kriptografiya</h3>
+                    <p class="skill-description">
+                        Ma'lumotlarni shifrlash va himoya qilish.
+                    </p>
+                    <div class="skill-tools">
+                        <span class="tool-tag">SSL/TLS</span>
+                        <span class="tool-tag">PGP</span>
+                        <span class="tool-tag">AES</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-12">
-                    <h2 class="text-3xl font-bold mb-4">Selected Projects</h2>
-                    <p class="text-gray-600 dark:text-gray-400">A selection of recent projects I've designed and built.</p>
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">So'nggi Loyihalar</h2>
+                <p class="section-subtitle">Muvaffaqiyatli amalga oshirilgan xavfsizlik loyihalari va tajribalar</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-badge">2025</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Bank Tizimi Xavfsizligi</h3>
+                        <p class="project-description">
+                            Yirik bank tizimining to'liq xavfsizlik auditini o'tkazish va zaifliklarni bartaraf etish.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Penetration Testing</span>
+                            <span class="project-tag">Audit</span>
+                            <span class="project-tag">Financial Security</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            Batafsil Ma'lumot
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Project 1 -->
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
-                        <div class="h-48 bg-gradient-to-r from-primary-500 to-purple-500"></div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-3">Nexus Design System</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">A comprehensive design system used by product teams to build consistent, accessible digital experiences across platforms.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="text-xs font-medium px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">Figma</span>
-                                <span class="text-xs font-medium px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">React</span>
-                                <span class="text-xs font-medium px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">TypeScript</span>
-                                <span class="text-xs font-medium px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">Storybook</span>
-                            </div>
-                            <a href="#" class="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300">
-                                View case study
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-badge">2024</div>
                     </div>
-                    
-                    <!-- Project 2 -->
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
-                        <div class="h-48 bg-gradient-to-r from-green-500 to-blue-500"></div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-3">Flow Analytics Dashboard</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">An intuitive analytics platform that helps teams visualize complex data and make informed product decisions.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="text-xs font-medium px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">Vue.js</span>
-                                <span class="text-xs font-medium px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">D3.js</span>
-                                <span class="text-xs font-medium px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">Node.js</span>
-                                <span class="text-xs font-medium px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">PostgreSQL</span>
-                            </div>
-                            <a href="#" class="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300">
-                                View case study
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
+                    <div class="project-content">
+                        <h3 class="project-title">E-Government Platform Security</h3>
+                        <p class="project-description">
+                            Davlat platformasining xavfsizlik arxitekturasini ishlab chiqish va amalga oshirishda yordam berish
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Network Security</span>
+                            <span class="project-tag">Infrastructure</span>
+                            <span class="project-tag">Compliance</span>
                         </div>
+                        <a href="#" class="project-link">
+                            Batafsil Ma'lumot
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-badge">2025</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Startup Data Protection</h3>
+                        <p class="project-description">
+                            Startup kompaniyasi uchun ma'lumotlarni himoya qilish tizimini yaratish boyicha maslahatlar
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Data Encryption</span>
+                            <span class="project-tag">Access Control</span>
+                            <span class="project-tag">Backup Systems</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            Batafsil Ma'lumot
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About & Contact Section -->
-    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-3 gap-12">
-                    <!-- About Content -->
-                    <div class="md:col-span-2">
-                        <h2 class="text-3xl font-bold mb-8">About Me</h2>
-                        <div class="space-y-6 text-gray-600 dark:text-gray-300">
-                            <p>I'm a product designer and developer with over 8 years of experience building digital products for startups and established companies alike.</p>
-                            <p>My work focuses on creating intuitive, accessible experiences that solve real problems for users while meeting business objectives. I believe in the power of thoughtful design combined with technical excellence.</p>
-                            <p>Currently, I lead product design at Innovate Labs, where I work with cross-functional teams to develop products that make complex technology simple and approachable.</p>
+    <!-- Experience Section -->
+    <section id="experience" class="section experience-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ish Tajribasi</h2>
+                <p class="section-subtitle">Professional yo'lim</p>
+            </div>
+            
+            <div class="timeline">
+                <!-- Experience 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 -2025 </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title"> Xavfsizlik Mutaxassisi</h3>
+                        <span class="timeline-company">SecureTech Solutions</span>
+                        <p class="timeline-description">
+                            Kiberxavfsizlik loyihalarini boshqarish, jamoa bilan ishlash 
+                            va murakkab xavfsizlik muammolarini hal qilish.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - 2025</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Penetration Tester</h3>
+                        <span class="timeline-company">CyberDefense Agency</span>
+                        <p class="timeline-description">
+                            Turli tashkilotlar uchun penetratsion testlar o'tkazish, 
+                            xavfsizlik zaifliklarini aniqlash va tavsiyalar berish.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Experience 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Network Security Analyst</h3>
+                        <span class="timeline-company">DataGuard Systems</span>
+                        <p class="timeline-description">
+                            Tarmoq xavfsizligini monitoring qilish, tahdidlarni aniqlash 
+                            va ularga qarshi choralar ko'rish.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Bog'lanish</h2>
+                <p class="section-subtitle">Xavfsizlik bo'yicha maslahat yoki hamkorlik uchun</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 class="contact-title">Kontakt Ma'lumotlarim</h3>
+                    
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>xmnew777@gmail.com</p>
+                            </div>
                         </div>
                         
-                        <!-- Social Links -->
-                        <div class="mt-10">
-                            <h3 class="text-xl font-bold mb-4">Connect with me</h3>
-                            <div class="flex space-x-4">
-                                <a href="#" class="p-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="p-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="#" class="p-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="p-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                                    <i class="fab fa-dribbble"></i>
-                                </a>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Telefon</h4>
+                                <p>+998 942439800</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Manzil</h4>
+                                <p>Toshkent, O'zbekiston</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Ish Vaqti</h4>
+                                <p>full time part time remote</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Newsletter/Contact Form -->
-                    <div id="contact" class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
-                        <h3 class="text-2xl font-bold mb-6">Stay in the loop</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">Subscribe to my newsletter for occasional updates on design, development, and product thinking.</p>
-                        
-                        <form id="newsletter-form" class="space-y-4">
-                            <div>
-                                <label for="name" class="block text-sm font-medium mb-2">Name</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-transparent focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Your name">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium mb-2">Email</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-transparent focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="you@example.com" required>
-                            </div>
-                            <button type="submit" class="w-full px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl">
-                                Subscribe
-                            </button>
-                        </form>
-                        
-                        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">Prefer email?</p>
-                            <a href="mailto:hello@alexmorgan.com" class="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300">
-                                hello@xmnew777@gmail.com
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                     </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Ismingiz" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" placeholder="Email manzilingiz" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" placeholder="Mavzu" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea placeholder="Xabaringiz..." rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i>
+                            Xabarni Yuborish
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-10 border-t border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <p class="text-gray-600 dark:text-gray-400">© 2023 Alex Morgan. All rights reserved.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#" class="logo">NS<span class="logo-dot">.</span></a>
+                    <p class="footer-description">
+                        Kiberxavfsizlik bo'yicha professional yechimlar
+                    </p>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300">About</a>
-                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300">Articles</a>
-                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300">Projects</a>
-                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300">Contact</a>
+                
+                <div class="footer-links">
+                    <h4>Tez Havolalar</h4>
+                    <a href="#home">Bosh Sahifa</a>
+                    <a href="#about">Haqimda</a>
+                    <a href="#skills">Ko'nikmalar</a>
+                    <a href="#projects">Loyihalar</a>
                 </div>
+                
+                <div class="footer-links">
+                    <h4>Xizmatlar</h4>
+                    <a href="#projects">Penetration Testing</a>
+                    <a href="#projects">Security analyst</a>
+                    <a href="#projects">Consulting</a>
+                    <a href="#projects">Training</a>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Yangiliklar</h4>
+                    <p>Xavfsizlik bo'yicha yangiliklar va maslahatlar</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Email manzilingiz">
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Nurillo Soliyev. Barcha huquqlar himoyalangan.</p>
+                <p>Designed with <i class="fas fa-heart"></i> for Security</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Newsletter form submission
-        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const name = document.getElementById('name').value;
-            
-            // In a real implementation, you would send this data to a server
-            // For demo purposes, we'll just show an alert
-            alert(`Thanks for subscribing, ${name || 'there'}! You'll receive updates at ${email}.`);
-            document.getElementById('newsletter-form').reset();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
 
