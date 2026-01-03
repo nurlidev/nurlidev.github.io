@@ -1,819 +1,409 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soliyev | Nurillo - Cybersecurity Specialist</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Nurillo - Cyber Security Specialist</title>
     <style>
-        :root {
-            --primary-blue: #2563eb;
-            --primary-cyan: #06b6d4;
-            --primary-purple: #8b5cf6;
-            --primary-pink: #ec4899;
-            --dark-bg: #0f172a;
-            --light-bg: #f8fafc;
-            --gray-bg: #f1f5f9;
-        }
-        
+        /* Umumiy stil */
         * {
-            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        /* Hero Section - Qora fon */
-        .hero-dark {
-            background: linear-gradient(135deg, #000000 0%, #1e293b 100%);
-            color: white;
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
         }
         
-        /* Boshqa qismlar - Oq fon */
-        .section-light {
-            background-color: #ffffff;
-            color: #1e293b;
-        }
-        
-        /* Kulrang bo'lim (CV uchun) */
-        .section-gray {
-            background-color: #f1f5f9;
-            color: #1e293b;
-        }
-        
-        /* Professional gradient borders */
-        .gradient-border {
-            position: relative;
-            border: 2px solid transparent;
-            background: linear-gradient(white, white) padding-box,
-                        linear-gradient(45deg, #2563eb, #06b6d4, #8b5cf6, #ec4899) border-box;
-            border-radius: 12px;
-        }
-        
-        .text-gradient {
-            background: linear-gradient(45deg, #2563eb, #06b6d4, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Clean card design */
-        .clean-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        
-        .clean-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-        
-        /* Sertifikat kartalari */
-        .cert-card {
-            position: relative;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .cert-card:hover .cert-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .cert-overlay {
-            position: absolute;
+        /* Navbar */
+        .navbar {
+            background-color: #111111;
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(37, 99, 235, 0.9);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            border-radius: 12px;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
         }
         
-        /* Notebook taqsimoti */
-        .notebook-layout {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             max-width: 1200px;
             margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00ff00;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
+        .nav-links a:hover {
+            color: #00ff00;
+            background-color: #222;
+        }
+        
+        /* Hero bo'limi */
+        .hero {
+            padding: 150px 2rem 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            min-height: 100vh;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ff00, #008800);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .title {
+            font-size: 1.8rem;
+            color: #00ff00;
+            margin-bottom: 1.5rem;
+            padding-left: 10px;
+            border-left: 4px solid #00ff00;
+        }
+        
+        .description {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        /* Notebook container */
+        .notebook-container {
+            flex: 1;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .notebook-frame {
+            border: 2px solid #333;
+            border-radius: 15px;
+            padding: 30px;
+            background: linear-gradient(145deg, #111, #222);
+            box-shadow: 
+                0 0 50px rgba(0, 255, 0, 0.1),
+                inset 0 0 20px rgba(0, 255, 0, 0.05);
             position: relative;
         }
         
-        /* Scroll animatsiyasi */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
+        .notebook-frame::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 20px;
+            background: #222;
+            border-radius: 0 0 10px 10px;
         }
         
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .notebook-content {
+            padding: 20px;
+            background: #000;
+            border-radius: 8px;
+            min-height: 300px;
         }
         
-        /* Progress bar */
-        .progress-bar {
-            height: 8px;
-            background: #e2e8f0;
-            border-radius: 4px;
-            overflow: hidden;
+        /* Tugmalar */
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
         }
         
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #2563eb, #8b5cf6);
-            border-radius: 4px;
+        .btn {
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: #00ff00;
+            color: #000;
+        }
+        
+        .btn-primary:hover {
+            background-color: #00cc00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(0, 255, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Kontakt bo'limi */
+        .contact {
+            padding: 100px 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #00ff00;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            text-align: center;
+        }
+        
+        .contact-item i {
+            font-size: 2rem;
+            color: #00ff00;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #111111;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid #333;
+            margin-top: 4rem;
+        }
+        
+        .footer-text {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive dizayn */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 120px 1rem 50px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .title {
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .notebook-container {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+        
+        /* Animatsiyalar */
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 0, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(0, 255, 0, 0.2); }
+        }
+        
+        .notebook-frame {
+            animation: glow 3s infinite;
+        }
+        
+        /* Terminal ta'siri */
+        .terminal {
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-shield-alt text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-bold text-gray-900">Soliyev | Nurillo</h1>
-                        <p class="text-blue-600 text-sm">Cybersecurity Specialist</p>
-                    </div>
-                </div>
-
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
-                    <a href="#experience" class="text-gray-700 hover:text-blue-600 font-medium">Experience</a>
-                    <a href="#skills" class="text-gray-700 hover:text-blue-600 font-medium">Skills</a>
-                    <a href="#certifications" class="text-gray-700 hover:text-blue-600 font-medium">Certifications</a>
-                    <a href="#cv" class="text-gray-700 hover:text-blue-600 font-medium">CV / Resume</a>
-                    <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Contact</a>
-                </div>
-
-                <button class="md:hidden">
-                    <i class="fas fa-bars text-gray-700 text-xl"></i>
-                </button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Nurillo</a>
+            <div class="nav-links">
+                <a href="#about">Haqimda</a>
+                <a href="#projects">Loyihalar</a>
+                <a href="#contact">Bog'lanish</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section (Qora fon) -->
-    <section id="home" class="hero-dark min-h-screen pt-32 px-6">
-        <div class="notebook-layout">
-            <!-- Notebook ustki qismi -->
-            <div class="text-center mb-16">
-                <div class="w-32 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-8"></div>
-                
-                <div class="relative inline-block mb-8">
-                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur opacity-30"></div>
-                    <div class="relative bg-white rounded-full p-1 w-48 h-48 mx-auto overflow-hidden border-4 border-white">
-                        <!-- Profile image placeholder -->
-                        <div class="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                            <i class="fas fa-user-shield text-6xl text-blue-600"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <h1 class="text-5xl font-bold mb-4">
-                    <span class="text-gradient">Soliyev | Nurillo</span>
-                </h1>
-                
-                <div class="inline-block gradient-border px-8 py-3 mb-6">
-                    <h2 class="text-2xl font-bold">
-                        <i class="fas fa-shield-alt mr-2"></i>
-                        Cybersecurity Specialist
-                    </h2>
-                </div>
-                
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-12">
-                    Protecting digital infrastructure and ensuring security compliance through 
-                    advanced threat detection and preventive measures.
-                </p>
-                
-                <div class="flex flex-wrap justify-center gap-6">
-                    <a href="#contact" class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition">
-                        <i class="fas fa-envelope mr-2"></i>Get in Touch
-                    </a>
-                    <a href="#cv" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition">
-                        <i class="fas fa-download mr-2"></i>Download CV
-                    </a>
-                </div>
+    <!-- Hero bo'limi -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Nurillo</h1>
+            <div class="title">Cyber Security Specialist</div>
+            <p class="description">
+                Xavfsizlik tahlili, penetratsion test, tarmoq himoyasi va ma'lumotlar xavfsizligi bo'yicha mutaxassis.
+                Zamonaviy xavfsizlik tahdidlariga qarshi innovatsion yechimlar.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Bog'lanish</a>
+                <a href="#projects" class="btn btn-secondary">Loyihalarim</a>
             </div>
+        </div>
+        
+        <div class="notebook-container">
+            <div class="notebook-frame">
+                <div class="notebook-content terminal">
+                    <pre>
+$ whoami
+> Nurillo - Cyber Security Specialist
 
-            <!-- Stats Notebook ichida -->
-            <div class="grid md:grid-cols-4 gap-8 mt-16">
-                <div class="stat-card clean-card p-6 text-center">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">1+</div>
-                    <div class="text-gray-800 font-medium">Year Experience</div>
-                    <div class="text-gray-500 text-sm mt-2">Cybersecurity Field</div>
-                </div>
-                
-                <div class="stat-card clean-card p-6 text-center">
-                    <div class="text-3xl font-bold text-purple-600 mb-2">25+</div>
-                    <div class="text-gray-800 font-medium">Security Audits</div>
-                    <div class="text-gray-500 text-sm mt-2">Successfully Completed</div>
-                </div>
-                
-                <div class="stat-card clean-card p-6 text-center">
-                    <div class="text-3xl font-bold text-cyan-600 mb-2">100%</div>
-                    <div class="text-gray-800 font-medium">Client Satisfaction</div>
-                    <div class="text-gray-500 text-sm mt-2">Rate Guaranteed</div>
-                </div>
-                
-                <div class="stat-card clean-card p-6 text-center">
-                    <div class="text-3xl font-bold text-pink-600 mb-2">8+</div>
-                    <div class="text-gray-800 font-medium">Certifications</div>
-                    <div class="text-gray-500 text-sm mt-2">Professional Achievements</div>
+$ skills
+> Penetration Testing
+> Network Security
+> Threat Analysis
+> Incident Response
+> Cryptography
+> Security Audit
+
+$ tools
+> Metasploit, Nmap
+> Wireshark, Burp Suite
+> Kali Linux, Parrot OS
+> Python, Bash Scripting
+
+$ contact
+> Email: nurillo@cybersec.uz
+> Phone: +998 XX XXX XX XX
+                    </pre>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section (Oq fon) -->
-    <section id="about" class="section-light py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4 text-gradient">About Me</h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-12"></div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">My Cybersecurity Journey</h3>
-                    <p class="text-gray-700 mb-6">
-                        As a dedicated Cybersecurity Specialist with 1+ years of experience, 
-                        I focus on protecting organizations from digital threats through 
-                        comprehensive security assessments and proactive defense strategies.
-                    </p>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium text-gray-800">Network Security</span>
-                                <span class="text-blue-600 font-bold">90%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium text-gray-800">Penetration Testing</span>
-                                <span class="text-blue-600 font-bold">85%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium text-gray-800">Incident Response</span>
-                                <span class="text-blue-600 font-bold">80%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="clean-card p-8">
-                    <h4 class="text-xl font-bold text-gray-900 mb-6">Core Expertise</h4>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
-                            <i class="fas fa-network-wired text-blue-600"></i>
-                            <span class="text-gray-800">Network Defense</span>
-                        </div>
-                        <div class="flex items-center space-x-3 p-3 bg-purple-50 rounded-lg">
-                            <i class="fas fa-user-secret text-purple-600"></i>
-                            <span class="text-gray-800">Ethical Hacking</span>
-                        </div>
-                        <div class="flex items-center space-x-3 p-3 bg-cyan-50 rounded-lg">
-                            <i class="fas fa-cloud text-cyan-600"></i>
-                            <span class="text-gray-800">Cloud Security</span>
-                        </div>
-                        <div class="flex items-center space-x-3 p-3 bg-pink-50 rounded-lg">
-                            <i class="fas fa-lock text-pink-600"></i>
-                            <span class="text-gray-800">Data Protection</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- Kontakt bo'limi -->
+    <section class="contact" id="contact">
+        <h2>Bog'lanish</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div>📧</div>
+                <h3>Email</h3>
+                <p>nurillo@cybersec.uz</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Experience Section (Oq fon) -->
-    <section id="experience" class="section-light py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4 text-gradient">Professional Experience</h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-12"></div>
-            
-            <div class="space-y-8">
-                <!-- Experience 1 -->
-                <div class="clean-card p-8">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900">Cybersecurity Analyst</h3>
-                            <p class="text-blue-600 font-medium">SecureTech Solutions</p>
-                        </div>
-                        <span class="text-gray-600">2023 - Present</span>
-                    </div>
-                    <p class="text-gray-700 mb-6">
-                        Conducting security assessments, vulnerability scanning, and threat analysis 
-                        for enterprise clients. Implemented security controls that reduced incidents by 35%.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Threat Analysis</span>
-                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Vulnerability Assessment</span>
-                        <span class="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm">SIEM</span>
-                    </div>
-                </div>
-                
-                <!-- Experience 2 -->
-                <div class="clean-card p-8">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900">Junior Security Specialist</h3>
-                            <p class="text-blue-600 font-medium">CyberDefend Inc.</p>
-                        </div>
-                        <span class="text-gray-600">2022 - 2023</span>
-                    </div>
-                    <p class="text-gray-700 mb-6">
-                        Assisted in penetration testing, security monitoring, and basic incident response. 
-                        Contributed to security awareness training programs.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Penetration Testing</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Security Monitoring</span>
-                        <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm">Training</span>
-                    </div>
-                </div>
+            <div class="contact-item">
+                <div>📱</div>
+                <h3>Telefon</h3>
+                <p>+998 XX XXX XX XX</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section (Oq fon) - YANGILANDI -->
-    <section id="certifications" class="section-light py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4 text-gradient">Professional Certifications</h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-12"></div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Certificate 1 -->
-                <div class="cert-card clean-card">
-                    <div class="h-48 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
-                        <div class="text-center p-4">
-                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-certificate text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-bold text-gray-900">CompTIA Security+</h4>
-                            <p class="text-blue-600 text-sm">Valid until: 2025</p>
-                        </div>
-                    </div>
-                    <div class="cert-overlay">
-                        <h4 class="font-bold text-xl mb-2">CompTIA Security+</h4>
-                        <p class="text-sm text-center mb-4">Foundational cybersecurity certification covering network security, threats, and vulnerabilities.</p>
-                        <div class="text-xs">
-                            <p><i class="fas fa-calendar mr-2"></i>Issued: 2023</p>
-                            <p><i class="fas fa-id-card mr-2"></i>ID: COMP001234</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Certificate 2 -->
-                <div class="cert-card clean-card">
-                    <div class="h-48 bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
-                        <div class="text-center p-4">
-                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-certificate text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-bold text-gray-900">CEH v11</h4>
-                            <p class="text-purple-600 text-sm">Ethical Hacker</p>
-                        </div>
-                    </div>
-                    <div class="cert-overlay">
-                        <h4 class="font-bold text-xl mb-2">Certified Ethical Hacker v11</h4>
-                        <p class="text-sm text-center mb-4">Advanced penetration testing and ethical hacking certification from EC-Council.</p>
-                        <div class="text-xs">
-                            <p><i class="fas fa-calendar mr-2"></i>Issued: 2023</p>
-                            <p><i class="fas fa-id-card mr-2"></i>ID: CEH112345</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Certificate 3 -->
-                <div class="cert-card clean-card">
-                    <div class="h-48 bg-gradient-to-br from-cyan-50 to-cyan-100 flex items-center justify-center">
-                        <div class="text-center p-4">
-                            <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-certificate text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-bold text-gray-900">Cisco CCNA Security</h4>
-                            <p class="text-cyan-600 text-sm">Network Security</p>
-                        </div>
-                    </div>
-                    <div class="cert-overlay">
-                        <h4 class="font-bold text-xl mb-2">Cisco CCNA Security</h4>
-                        <p class="text-sm text-center mb-4">Cisco certified network security professional specializing in Cisco security technologies.</p>
-                        <div class="text-xs">
-                            <p><i class="fas fa-calendar mr-2"></i>Issued: 2022</p>
-                            <p><i class="fas fa-id-card mr-2"></i>ID: CCNA-SEC789</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Certificate 4 -->
-                <div class="cert-card clean-card">
-                    <div class="h-48 bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center">
-                        <div class="text-center p-4">
-                            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-certificate text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-bold text-gray-900">ISO 27001 Lead Auditor</h4>
-                            <p class="text-green-600 text-sm">Information Security</p>
-                        </div>
-                    </div>
-                    <div class="cert-overlay">
-                        <h4 class="font-bold text-xl mb-2">ISO 27001 Lead Auditor</h4>
-                        <p class="text-sm text-center mb-4">Information Security Management Systems auditor certification.</p>
-                        <div class="text-xs">
-                            <p><i class="fas fa-calendar mr-2"></i>Issued: 2023</p>
-                            <p><i class="fas fa-id-card mr-2"></i>ID: ISO27001-LA</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Certificate 5 -->
-                <div class="cert-card clean-card">
-                    <div class="h-48 bg-gradient-to-br from-pink-50 to-pink-100 flex items-center justify-center">
-                        <div class="text-center p-4">
-                            <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-certificate text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-bold text-gray-900">AWS Security Specialty</h4>
-                            <p class="text-pink-600 text-sm">Cloud Security</p>
-                        </div>
-                    </div>
-                    <div class="cert-overlay">
-                        <h4 class="font-bold text-xl mb-2">AWS Security Specialty</h4>
-                        <p class="text-sm text-center mb-4">Amazon Web Services security certification for cloud security professionals.</p>
-                        <div class="text-xs">
-                            <p><i class="fas fa-calendar mr-2"></i>Issued: 2024</p>
-                            <p><i class="fas fa-id-card mr-2"></i>ID: AWSSEC456</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Certificate 6 -->
-                <div class="cert-card clean-card">
-                    <div class="h-48 bg-gradient-to-br from-yellow-50 to-yellow-100 flex items-center justify-center">
-                        <div class="text-center p-4">
-                            <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-certificate text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-bold text-gray-900">Google Cyber Security</h4>
-                            <p class="text-yellow-600 text-sm">Professional Certificate</p>
-                        </div>
-                    </div>
-                    <div class="cert-overlay">
-                        <h4 class="font-bold text-xl mb-2">Google Cyber Security</h4>
-                        <p class="text-sm text-center mb-4">Google's professional cybersecurity certificate program.</p>
-                        <div class="text-xs">
-                            <p><i class="fas fa-calendar mr-2"></i>Issued: 2023</p>
-                            <p><i class="fas fa-id-card mr-2"></i>ID: GOOG-CYB001</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Certificate 7 -->
-                <div class="cert-card clean-card">
-                    <div class="h-48 bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center">
-                        <div class="text-center p-4">
-                            <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-certificate text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-bold text-gray-900">SANS GIAC GSEC</h4>
-                            <p class="text-red-600 text-sm">Security Essentials</p>
-                        </div>
-                    </div>
-                    <div class="cert-overlay">
-                        <h4 class="font-bold text-xl mb-2">SANS GIAC GSEC</h4>
-                        <p class="text-sm text-center mb-4">Global Information Assurance Certification security essentials.</p>
-                        <div class="text-xs">
-                            <p><i class="fas fa-calendar mr-2"></i>Issued: 2023</p>
-                            <p><i class="fas fa-id-card mr-2"></i>ID: GSEC-2023-123</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Certificate 8 -->
-                <div class="cert-card clean-card">
-                    <div class="h-48 bg-gradient-to-br from-indigo-50 to-indigo-100 flex items-center justify-center">
-                        <div class="text-center p-4">
-                            <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-certificate text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-bold text-gray-900">Microsoft SC-900</h4>
-                            <p class="text-indigo-600 text-sm">Security Fundamentals</p>
-                        </div>
-                    </div>
-                    <div class="cert-overlay">
-                        <h4 class="font-bold text-xl mb-2">Microsoft SC-900</h4>
-                        <p class="text-sm text-center mb-4">Microsoft Security, Compliance, and Identity Fundamentals.</p>
-                        <div class="text-xs">
-                            <p><i class="fas fa-calendar mr-2"></i>Issued: 2024</p>
-                            <p><i class="fas fa-id-card mr-2"></i>ID: MS-SC900-001</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Certificate hover instruction -->
-            <div class="text-center mt-8">
-                <p class="text-gray-600">
-                    <i class="fas fa-mouse-pointer text-blue-500 mr-2"></i>
-                    Hover over certificates to view details
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CV / Resume Section (Kulrang fon) -->
-    <section id="cv" class="section-gray py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4 text-gradient">CV / Resume</h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-12"></div>
-            
-            <div class="notebook-layout">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-file-alt text-white text-3xl"></i>
-                    </div>
-                    
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Download My Professional Resume</h3>
-                    <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
-                        Access my detailed CV containing comprehensive information about my education, 
-                        work experience, skills, and professional achievements in cybersecurity.
-                    </p>
-                    
-                    <div class="grid md:grid-cols-3 gap-6 mb-12">
-                        <div class="clean-card p-6">
-                            <i class="fas fa-graduation-cap text-blue-600 text-2xl mb-4"></i>
-                            <h4 class="font-bold text-gray-900 mb-2">Education</h4>
-                            <p class="text-gray-600 text-sm">Bachelor's in Computer Science with Cybersecurity focus</p>
-                        </div>
-                        
-                        <div class="clean-card p-6">
-                            <i class="fas fa-briefcase text-purple-600 text-2xl mb-4"></i>
-                            <h4 class="font-bold text-gray-900 mb-2">Work History</h4>
-                            <p class="text-gray-600 text-sm">1+ years in cybersecurity roles with progressive responsibility</p>
-                        </div>
-                        
-                        <div class="clean-card p-6">
-                            <i class="fas fa-tools text-cyan-600 text-2xl mb-4"></i>
-                            <h4 class="font-bold text-gray-900 mb-2">Technical Skills</h4>
-                            <p class="text-gray-600 text-sm">Comprehensive list of tools, technologies, and methodologies</p>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-4 max-w-md mx-auto">
-                        <!-- Form fields will be added by you later -->
-                        <div class="clean-card p-8 text-left">
-                            <h4 class="font-bold text-gray-900 mb-6 text-center">CV Download Form</h4>
-                            <p class="text-gray-600 text-center mb-6">
-                                <i class="fas fa-info-circle text-blue-500 mr-2"></i>
-                                You will add form fields here for users to request your CV
-                            </p>
-                            <div class="space-y-4">
-                                <div class="h-10 bg-gray-100 rounded"></div>
-                                <div class="h-10 bg-gray-100 rounded"></div>
-                                <div class="h-10 bg-gray-100 rounded"></div>
-                                <div class="h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded"></div>
-                            </div>
-                        </div>
-                        
-                        <p class="text-gray-500 text-sm">
-                            <i class="fas fa-lock mr-2"></i>
-                            Your information is secure and will only be used to send the CV
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section (Oq fon) -->
-    <section id="contact" class="section-light py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4 text-gradient">Get In Touch</h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-12"></div>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-8">Contact Information</h3>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-envelope text-blue-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-500">Email</p>
-                                <p class="text-gray-900 font-medium">contact@nurillosoliyev.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-phone text-purple-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-500">Phone</p>
-                                <p class="text-gray-900 font-medium">+998 XX XXX XX XX</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-map-marker-alt text-cyan-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-500">Location</p>
-                                <p class="text-gray-900 font-medium">Tashkent, Uzbekistan</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-12">
-                        <h4 class="font-bold text-gray-900 mb-6">Follow Me</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-12 h-12 bg-gray-100 hover:bg-blue-100 rounded-lg flex items-center justify-center transition">
-                                <i class="fab fa-linkedin-in text-blue-600 text-xl"></i>
-                            </a>
-                            <a href="#" class="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition">
-                                <i class="fab fa-github text-gray-900 text-xl"></i>
-                            </a>
-                            <a href="#" class="w-12 h-12 bg-gray-100 hover:bg-blue-50 rounded-lg flex items-center justify-center transition">
-                                <i class="fab fa-twitter text-blue-400 text-xl"></i>
-                            </a>
-                            <a href="#" class="w-12 h-12 bg-gray-100 hover:bg-red-50 rounded-lg flex items-center justify-center transition">
-                                <i class="fab fa-youtube text-red-600 text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="clean-card p-8">
-                    <form id="contactForm">
-                        <div class="mb-6">
-                            <label class="block text-gray-700 mb-2 font-medium">Name</label>
-                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label class="block text-gray-700 mb-2 font-medium">Email</label>
-                            <input type="email" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label class="block text-gray-700 mb-2 font-medium">Subject</label>
-                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
-                        </div>
-                        
-                        <div class="mb-8">
-                            <label class="block text-gray-700 mb-2 font-medium">Message</label>
-                            <textarea rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-bold hover:shadow-lg transition">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
+            <div class="contact-item">
+                <div>📍</div>
+                <h3>Manzil</h3>
+                <p>Toshkent, O'zbekiston</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="flex items-center justify-center space-x-3 mb-6">
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-shield-alt text-white text-xl"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold">Soliyev | Nurillo</h1>
-                    <p class="text-cyan-400 text-sm">Cybersecurity Specialist</p>
-                </div>
-            </div>
-            
-            <p class="text-gray-400 max-w-2xl mx-auto mb-8">
-                Protecting digital assets and ensuring cybersecurity compliance through advanced 
-                threat detection and preventive security measures.
-            </p>
-            
-            <div class="flex justify-center space-x-6 mb-8">
-                <a href="#home" class="text-gray-400 hover:text-white">Home</a>
-                <a href="#about" class="text-gray-400 hover:text-white">About</a>
-                <a href="#experience" class="text-gray-400 hover:text-white">Experience</a>
-                <a href="#certifications" class="text-gray-400 hover:text-white">Certifications</a>
-                <a href="#cv" class="text-gray-400 hover:text-white">CV</a>
-                <a href="#contact" class="text-gray-400 hover:text-white">Contact</a>
-            </div>
-            
-            <div class="text-gray-500 text-sm">
-                <p>© 2024 Nurillo Soliyev. All rights reserved.</p>
-                <p class="mt-2">Designed with cybersecurity in mind</p>
-            </div>
+    <footer>
+        <div class="footer-text">
+            &copy; 2024 Nurillo. Barcha huquqlar himoyalangan.
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling
+        // Smooth scroll navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
-
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will respond as soon as possible.');
-            this.reset();
+        
+        // Navbar background scroll effekti
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 100) {
+                navbar.style.backgroundColor = 'rgba(17, 17, 17, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.backgroundColor = '#111111';
+                navbar.style.backdropFilter = 'none';
+            }
         });
-
-        // Scroll animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Mobile menu toggle
-        document.querySelector('button.md\\:hidden').addEventListener('click', function() {
-            const menu = document.createElement('div');
-            menu.className = 'fixed inset-0 bg-white z-50 p-6';
-            menu.innerHTML = `
-                <div class="flex justify-between items-center mb-8">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-shield-alt text-white text-xl"></i>
-                        </div>
-                        <div>
-                            <h1 class="text-xl font-bold text-gray-900">Soliyev | Nurillo</h1>
-                            <p class="text-blue-600 text-sm">Cybersecurity Specialist</p>
-                        </div>
-                    </div>
-                    <button onclick="this.parentElement.parentElement.remove()">
-                        <i class="fas fa-times text-gray-700 text-xl"></i>
-                    </button>
-                </div>
-                <div class="flex flex-col space-y-6">
-                    <a href="#home" class="text-gray-700 text-lg font-medium">Home</a>
-                    <a href="#about" class="text-gray-700 text-lg font-medium">About</a>
-                    <a href="#experience" class="text-gray-700 text-lg font-medium">Experience</a>
-                    <a href="#skills" class="text-gray-700 text-lg font-medium">Skills</a>
-                    <a href="#certifications" class="text-gray-700 text-lg font-medium">Certifications</a>
-                    <a href="#cv" class="text-gray-700 text-lg font-medium">CV / Resume</a>
-                    <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-lg text-center">Contact</a>
-                </div>
-            `;
-            document.body.appendChild(menu);
-        });
+        
+        // Terminal effekti
+        const terminalText = document.querySelector('.terminal pre');
+        const originalText = terminalText.textContent;
+        let typedText = '';
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < originalText.length) {
+                typedText += originalText.charAt(i);
+                terminalText.textContent = typedText;
+                i++;
+                setTimeout(typeWriter, 5);
+            }
+        }
+        
+        // Terminal effektini boshlash
+        setTimeout(typeWriter, 1000);
     </script>
 </body>
 </html>
